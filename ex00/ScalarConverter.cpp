@@ -46,7 +46,7 @@ void	ScalarConverter::convert(std::string input)
 	
 	if (size == 1 && isalpha(input[0]))
 	{
-		std::cout << "char: " << input[0] << std::endl;
+		std::cout << "char: " << "'" << input[0] << "'" << std::endl;
 		int i = static_cast <int> (input[0]);
 		std::cout << "int: " << i << std::endl;
 		std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast <float> (i) << "f" << std::endl;
@@ -58,7 +58,10 @@ void	ScalarConverter::convert(std::string input)
 		int i;
 		std::stringstream ss(input);
 		ss >> i;
-		std::cout << "char: " << static_cast <char> (i) << std::endl;
+		if (i < 33 || i > 126)
+			std::cout << "char: " << "Non displayable" << std::endl;
+		else
+			std::cout << "char: " << "'" << static_cast <char> (i) << "'" << std::endl;
 		std::cout << "int: " << i << std::endl;
 		std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast <float> (i) << "f" << std::endl;
 		std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast <double> (i) << std::endl;
@@ -87,11 +90,12 @@ void	ScalarConverter::convert(std::string input)
 		}
 		else if (!std::isinf(i) || !std::isnan(i))
 		{
-			std::cout << "char: " << static_cast <char> (i) << std::endl;
+			std::cout << "char: " << "'" << static_cast <char> (i) << "'" << std::endl;
 			std::cout << "int: " << static_cast <int> (i) << std::endl;
 		}
 		std::cout << "float: " << std::fixed << std::setprecision(1) << i << "f" << std::endl;
 		std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast <double> (i) << std::endl;
+
 		
 	}
 	else if (size >= 1 && isDouble(input))
@@ -118,10 +122,17 @@ void	ScalarConverter::convert(std::string input)
 		}
 		else if (!std::isinf(i) || !std::isnan(i))
 		{
-			std::cout << "char: " << static_cast <char> (i) << std::endl;
+			std::cout << "char: " << "'" << static_cast <char> (i) << "'" << std::endl;
 			std::cout << "int: " << static_cast <int> (i) << std::endl;
 		}
 		std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast <float> (i) << "f" << std::endl;
 		std::cout << "double: " << std::fixed << std::setprecision(1) << i << std::endl;
 	}
+	else
+		std::cout << "Input Impossible to Convert" << std::endl;
+}
+
+ScalarConverter::ScalarConverter()
+{
+
 }

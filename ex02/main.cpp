@@ -82,6 +82,6 @@ int main()
 	Base* a = generate();
 	identify(a);
 	identify(*a);
-	delete a;
+	delete a ;
 	return (0);
 }

@@ -9,4 +9,5 @@ int	main()
 	uintptr_t i = Serializer::serialize(ptr);
 	Data* string = Serializer::deserialize(i);
 	std::cout << string->str << std::endl;
+	delete ptr;
 }
